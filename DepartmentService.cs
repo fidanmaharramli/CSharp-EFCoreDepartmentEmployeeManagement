@@ -8,7 +8,6 @@ internal class DepartmentService
     {
         _context = context;
     }
-    // CREATE
     public async Task<Department> CreateAsync(Department department)
     {
         department.CreatedAt = DateTime.UtcNow;
@@ -18,18 +17,13 @@ internal class DepartmentService
         await _context.SaveChangesAsync();
         return department;
     }
-    // READ-Get All
     public async Task<List<Department>> GetAllAsync()
     {
         return await _context.Departments
             .AsNoTracking()
             .ToListAsync();
     }
-    /// <summary>
-    /// Gets a department by its ID.
-    /// </summary>
-    ///<param name="id"></param>
-    ///<returns></returns>>
+    
     public async Task<Department?> GetByIdAsync(int id)
     {
         return await _context.Departments
